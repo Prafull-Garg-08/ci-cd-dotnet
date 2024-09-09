@@ -73,6 +73,9 @@ jobs:
       - name: Deploy
         run: dotnet publish ./CurrentTimeService.sln  --configuration Release --no-build --output '${{env.AZURE_WEBAPP_PACKAGE_PATH}}'
       
+      - name: Verify Published Files
+        run: ls -R ${env.AZURE_WEBAPP_PACKAGE_PATH}  
+      
       - name: Deployement
         uses: azure/webapps-deploy@v3
         with:

@@ -14,7 +14,11 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 // Define route for root URL
-app.MapGet("/", () => Results.Ok("Welcome to the CICD .NET application!"));
+app.MapGet("/", (HttpContext context) =>
+{
+    context.Response.Redirect("/swagger");
+    return Results.Empty(); // End the request
+});
 
 // Define route for GET UTC time
 app.MapGet("/time/utc", () => Results.Ok(DateTime.UtcNow));

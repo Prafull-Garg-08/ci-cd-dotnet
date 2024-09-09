@@ -70,8 +70,8 @@ jobs:
       - name: Build
         run: dotnet build  ./CurrentTimeService.sln --configuration Release --no-restore
       
-      - name: Deploy
-        run: dotnet publish ./CurrentTimeService.sln  --configuration Release --no-build --output '${{env.AZURE_WEBAPP_PACKAGE_PATH}}'
+      - name: Publish
+        run: dotnet publish ./CurrentTimeService/CurrentTimeService.csproj  --configuration Release --no-build --output '${{env.AZURE_WEBAPP_PACKAGE_PATH}}'
       
       - name: Verify Published Files
         run: ls -R ${{env.AZURE_WEBAPP_PACKAGE_PATH}}  

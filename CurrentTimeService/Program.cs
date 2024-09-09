@@ -17,7 +17,7 @@ app.UseHttpsRedirection();
 app.MapGet("/", (HttpContext context) =>
 {
     context.Response.Redirect("/swagger");
-    return Results.Empty(); // End the request
+    return Results.ok(); // End the request
 });
 
 // Define route for GET UTC time
